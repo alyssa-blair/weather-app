@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+        <title>Weather App Dashboard</title>
+        <link rel="stylesheet" href="dashboard.css" />
+    </head>
+    <body>
+        <div id="widgets" class="widgets">
+            <div id="current-weather" class="current-weather">
+                <div id="current-weather-temperature" class="current-weather-temperature">
+                    <h1>current weather</h1>
+                    <h3>temp</h3>
+                </div>
+                <div id="current-weather-breakdown" class="current-weather-breakdown">
+                    <h1>current weather breakdown</h1>
+                    <h3>breakdown</h3>
+                </div>
+            </div>
+            <div id="weekly-weather" class="weekly-weather">
+                <h1>7-day forecast</h1>
+                <div id="day0" class="weekday">
+                    <h2>Today</h2>
+                    <h3 id="minTemp"></h3>
+                    <h3 id="maxTemp"></h3>
+                </div>
+                <div id="day1" class="weekday">
+                    <h2></h2>
+                    <h3 id="minTemp"></h3>
+                    <h3 id="maxTemp"></h3>
+                </div>
+                <div id="day2" class="weekday">
+                    <h2></h2>
+                    <h3 id="minTemp"></h3>
+                    <h3 id="maxTemp"></h3>
+                </div>
+                <div id="day3" class="weekday">
+                    <h2></h2>
+                    <h3 id="minTemp"></h3>
+                    <h3 id="maxTemp"></h3>
+                </div>
+                <div id="day4" class="weekday">
+                    <h2></h2>
+                    <h3 id="minTemp"></h3>
+                    <h3 id="maxTemp"></h3>
+                </div>
+                <div id="day5" class="weekday">
+                    <h2></h2>
+                    <h3 id="minTemp"></h3>
+                    <h3 id="maxTemp"></h3>
+                </div>
+                <div id="day6" class="weekday">
+                    <h2></h2>
+                    <h3 id="minTemp"></h3>
+                    <h3 id="maxTemp"></h3>
+                </div>
+            </div>
+        </div>
+
+        <script type="module" src="src/dashboard.js"></script>
+    </body>
+</html>

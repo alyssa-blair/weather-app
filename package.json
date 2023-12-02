@@ -1,0 +1,26 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm test",
+    "start": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "https://github.com/alyssa-blair/weather-app.git",
+  "license": "ISC",
+  "keywords": [],
+  "description": "",
+  "dependencies": {
+    "node-dom": "^0.1.0",
+    "openmeteo": "^1.1.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "http-server": "^14.1.1",
+    "typescript": "^5.3.2"
+  }
+}
