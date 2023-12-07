@@ -7,6 +7,8 @@ function fillWeekdays(data) {
     const times = data.hourly.time;
 
     var nextDayFull = date;
+    var mins = [];
+    var maxs = [];
 
     for (var i = 0; i < 7; i++) {
         if (i != 0) {
@@ -14,11 +16,36 @@ function fillWeekdays(data) {
             setWeekday(i, nextDay);
         }
 
-        setMinMaxTemp(i, nextDayFull, times, temps);
+        var range = setMinMaxTemp(i, nextDayFull, times, temps);
+        mins.push(range[0]);
+        maxs.push(range[1]);
         nextDayFull = new Date(date.setDate(date.getDate() + 1));
     }
+
+    fillWeekdayBars(mins, maxs);
 }
 
+function fillWeekdayBars(mins, maxs) {
+    var min = Math.min.apply(null, mins);
+    var max = Math.max.apply(null, maxs);
+
+    const range = max - min != 0 ? max - min : 1;
+    const sectionSize = 150 / range;
+    
+    for (var i = 0; i < 7; i++) {
+        var elem = document.getElementById(`range${i}`)
+        var curMin = mins[i];
+        var curMax = maxs[i];
+
+        var curRange = curMax - curMin;
+        if (curRange == 0)
+            curRange = 1
+    
+        elem.style.width = `${curRange * sectionSize}px`;
+        elem.style.left = `${(curMin - min) * sectionSize}px`;
+
+    }
+}
 
 function setMinMaxTemp(dateIndex, date, times, temps) {
 
@@ -34,20 +61,19 @@ function setMinMaxTemp(dateIndex, date, times, temps) {
         if (times[i].startsWith(searchDate)) {
 
             if (!min || temps[i] < min)
-                min = temps[i];
+                min = Math.round(temps[i]);
 
             if (!max || temps[i] > max)
-                max = temps[i];
-            
+                max = Math.round(temps[i]);
         }
     }
 
-    const minTemp = document.querySelector(`#day${dateIndex} > #minTemp`);
-    const maxTemp = document.querySelector(`#day${dateIndex} > #maxTemp`);
+    const minTemp = document.querySelector(`#day${dateIndex} > div > #minTemp${dateIndex}`);
+    const maxTemp = document.querySelector(`#day${dateIndex} > div > #maxTemp${dateIndex}`);
 
-    minTemp.innerHTML = "Min: " + min + '\u00B0';
-    maxTemp.innerHTML = "Max: " + max + '\u00B0';
-
+    minTemp.innerHTML = min + '\u00B0';
+    maxTemp.innerHTML = max + '\u00B0';
+    return [min, max];
 }
 
 
