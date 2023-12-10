@@ -23,6 +23,7 @@ function fillWeekdays(data) {
     }
 
     fillWeekdayBars(mins, maxs);
+    fillCurrent(data)
 }
 
 function fillWeekdayBars(mins, maxs) {
@@ -45,6 +46,12 @@ function fillWeekdayBars(mins, maxs) {
         elem.style.left = `${(curMin - min) * sectionSize}px`;
 
     }
+}
+
+function fillCurrent(data) {
+    console.log(data.current)
+    var elem = document.getElementById("current-weather-temp");
+    elem.innerHTML = data.current.temperature_2m + '\u00B0';
 }
 
 function setMinMaxTemp(dateIndex, date, times, temps) {
@@ -139,10 +146,15 @@ function fetchData() {
 }
 
 function showLocation(position) {
-    localStorage.setItem('latitude', position.coords.latitude.toString());
-    localStorage.setItem('longitude', position.coords.latitude.toString());
+    const latitude = position.coords.latitude.toString()
+    const longitude = position.coords.longitude.toString()
+
+    localStorage.setItem('latitude', latitude);
+    localStorage.setItem('longitude', longitude);
+    localStorage.setItem('locationName', new google.maps.LatLng(latitude, longitude));
 }
 
-window.onload = async function() {
+window.onload = function() {
     fetchData();
+
 }

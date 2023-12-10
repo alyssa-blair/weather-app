@@ -36,17 +36,18 @@ h3 {
 }
 
 .weekly-weather {
-    position: relative;
-    background-color: rgb(42, 63, 97);
+    position: absolute;
+    background-color: rgb(12, 33, 67, 0.5);
     font-family: inherit;
     width: 99%;
-    top: 4px;
-    min-height: 1000px;
+    height: 1300px;
     min-width: 800px;
     max-width: 800px;
     border-radius: 20px;
-    display: inline-block;
     padding: 10px;
+    left: 0px;
+    top: 225px;
+
 }
 
 .weekday {
@@ -68,33 +69,57 @@ h3 {
 }
 
 .current-weather-temperature {
-    background-color: rgb(42, 63, 97);
-    position: relative;
+    background-color: rgb(12, 33, 67, 0.5);
+    position: absolute;
     font-family: inherit;
-    min-height: 200px;
+    height: 200px;
     /* max-width: 300px; */
-    width: 39%;
+    width: 300px;
     border-radius: 20px;
-    display: inline-block;
-    padding: 3px;
+    padding: 10px;
+    margin-bottom: 0px;
+    left: 0px;
+    display: block;
+}
+
+.current-weather-temperature h1 {
+    margin-bottom: 0px;
+}
+
+.current-weather-temperature p {
+    color: rgb(0, 12, 55, 0.75);
+    font-size: 60px;
+    font-weight: 600;
+    margin: 0px;
 }
 
 .current-weather-breakdown {
-    background-color: rgb(42, 63, 97);
-    position: relative;
+    background-color: rgb(12, 33, 67, 0.5);
+    position: absolute;
     font-family: inherit;
-    /* min-width: 495px; */
-    width: 59%;
-    min-height: 200px;
+    width: 800px;
+    height: 200px;
     border-radius: 20px;
-    display: inline-block;
-    padding: 3px;
+    padding: 10px;
+    left: 325px;
 }
 
-.weekday-info {
-    min-width: 500px;
-    /* background-color: blue; */
+.side-widgets {
+    background-color: rgb(12, 33, 67, 0.5);
+    position: relative;
+    left: 825px;
+    width: 300px;
+    height: 240px;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 5px;
+    top: 225px;
 }
+
+/* .weekday-info { */
+    /* min-width: 500px; */
+    /* background-color: blue; */
+/* } */
 
 .temperature-bar {
     display: inline-block;
@@ -109,10 +134,8 @@ h3 {
     display: block;
     position: relative;
     background-color: rgba(7, 77, 156, 0.596);
-    /* width: 10px; */
     min-height: 10px;
     border-radius: 20px;
-
 }
 
 .min-temp {
