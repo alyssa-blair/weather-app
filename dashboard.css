@@ -59,9 +59,9 @@ h3 {
     margin: auto;
     border-radius: 10px;
     border-width: 10px;
-    border-color: rgb(0,0,0,0);
     padding: 5px 15px;
     margin-bottom: 15px;
+    cursor: pointer;
 }
 
 .weekday-date {
@@ -73,7 +73,6 @@ h3 {
     position: absolute;
     font-family: inherit;
     height: 200px;
-    /* max-width: 300px; */
     width: 300px;
     border-radius: 20px;
     padding: 10px;
@@ -104,6 +103,42 @@ h3 {
     left: 325px;
 }
 
+.current-weather-breakdown h1 {
+    margin-bottom: 0px;
+}
+
+.current-weather-breakdown ::-webkit-scrollbar {
+    /* width: 10px; */
+    border-radius: 20px;
+}
+
+.current-weather-breakdown ::-webkit-scrollbar-track {
+    background: rgb(12, 33, 67, 0.5);
+    border-radius: 20px;
+    scrollbar-width: thin;
+}
+
+.current-weather-breakdown ::-webkit-scrollbar-thumb {
+    background: rgb(102, 133, 167);
+    border-radius: 20px;
+    border: 5px solid transparent;
+    background-clip: content-box;
+}
+
+#current-weather-hourly {
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+.hourly-breakdown {
+    background-color: rgb(12, 33, 67, 0.5);
+    width: 80px;
+    height: 100px;
+    display: inline-block;
+    margin: 10px 5px;
+    border-radius: 10px;
+}
+
 .side-widgets {
     background-color: rgb(12, 33, 67, 0.5);
     position: relative;
@@ -115,11 +150,6 @@ h3 {
     margin-bottom: 5px;
     top: 225px;
 }
-
-/* .weekday-info { */
-    /* min-width: 500px; */
-    /* background-color: blue; */
-/* } */
 
 .temperature-bar {
     display: inline-block;
@@ -144,4 +174,29 @@ h3 {
 
 .max-temp {
     display: inline-block;
+}
+
+#plot-window {
+    position: fixed;
+    width: 800px;
+    height: 500px;
+    background: rgb(12, 33, 67);
+    padding: 10px;
+    border-radius: 20px;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+}
+
+.close-button {
+    min-width: 150px;
+    background-color:#1f77b4; /*rgba(7, 77, 156);*/
+    padding: 5px;
+    color: inherit;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
 }
