@@ -26,6 +26,14 @@ h3 {
     color: rgb(150, 150, 150);
 }
 
+h4 {
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: rgb(122, 122, 122);
+    margin: 0px;
+}
+
 .widgets {
     position: relative;
     /* background-color: red; */
@@ -137,6 +145,22 @@ h3 {
     display: inline-block;
     margin: 10px 5px;
     border-radius: 10px;
+}
+
+.hourly-breakdown h3 {
+    margin: 0px;
+}
+
+#hourly-temp {
+    font-weight: 600;
+    font-size: 18px;
+    margin: -5px;
+}
+
+#hourly-emoji {
+    font-weight: 600;
+    font-size: 25px;
+    margin: 0px;
 }
 
 .side-widgets {

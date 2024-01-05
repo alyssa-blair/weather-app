@@ -39,7 +39,7 @@ export function fillWeekdays(data, graphDate=null) {
     // fill the min-max bars and the current temperature for each weekday
     fillWeekdayBars(mins, maxs);
     currentWeatherTemp(data);
-    currentWeatherBreakdown(data.current.time, temps, times);
+    currentWeatherBreakdown(data, temps, times);
 }
 
 

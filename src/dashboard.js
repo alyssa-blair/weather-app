@@ -23,10 +23,18 @@ for (var i = 0; i < 24; i++) {
     currentWeatherDiv.id = `hour${i}`;
     currentWeatherDiv.className = `hourly-breakdown`;
 
+    const currentWeatherDate = document.createElement('h4');
+    currentWeatherDiv.appendChild(currentWeatherDate);
+
     const currentWeatherTime = document.createElement('h3');
     currentWeatherDiv.appendChild(currentWeatherTime);
 
+    const weatherEmoji = document.createElement('p');
+    weatherEmoji.id = 'hourly-emoji';
+    currentWeatherDiv.appendChild(weatherEmoji);
+
     const currentWeatherTemp = document.createElement('p');
+    currentWeatherTemp.id = 'hourly-temp';
     currentWeatherDiv.appendChild(currentWeatherTemp);
 
     currentWeatherBreakdown.appendChild(currentWeatherDiv);
@@ -55,7 +63,7 @@ function getParams() {
 
 function fetchData(date=null) {
     const params = getParams();
-    const api = `https://api.open-meteo.com/v1/forecast?latitude=${params.latitude}&longitude=${params.longitude}&timezone=${params.timezone}&current=temperature_2m,wind_speed_10m&hourly=${params.hourly},relative_humidity_2m,wind_speed_10m`
+    const api = `https://api.open-meteo.com/v1/forecast?latitude=${params.latitude}&longitude=${params.longitude}&timezone=${params.timezone}&current=temperature_2m,wind_speed_10m,weather_code&hourly=${params.hourly},relative_humidity_2m,wind_speed_10m,weather_code`
 
     fetch(api).then(response => {    
         if (!response.ok)
