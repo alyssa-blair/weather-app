@@ -1,5 +1,8 @@
 import { formatDate } from "../dashboard/dateFormat.js";
-import { currentWeatherBreakdown, currentWeatherTemp } from "../currentWeather/current.js";
+import {
+  currentWeatherBreakdown,
+  currentWeatherTemp,
+} from "../currentWeather/current.js";
 import { createGraph } from "./graph.js";
 
 export function fillWeekdays(data, graphDate = null) {

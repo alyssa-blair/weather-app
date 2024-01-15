@@ -1,50 +1,50 @@
 body {
-    background-color: black;
-    height: fill;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
-    text-align: center;
+  background-color: black;
+  height: fill;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  text-align: center;
 }
 
 h1 {
-position: relative;
-color: white;
-top: 250px;
-text-decoration: none;
-font-weight: 100;
+  position: relative;
+  color: white;
+  top: 250px;
+  text-decoration: none;
+  font-weight: 100;
 }
 
 .location-form {
-position: relative;
-display: inline-block;
-top: 245px;
+  position: relative;
+  display: inline-block;
+  top: 245px;
 }
 
 .location-input {
-position: relative;
-border-radius: 20px;
-padding: 5px;
-text-align: center;
-font-family: inherit;
-color: inherit;
-background-color: rgb(45, 45, 45);
-border: none;
-padding-right: 30px;
+  position: relative;
+  border-radius: 20px;
+  padding: 5px;
+  text-align: center;
+  font-family: inherit;
+  color: inherit;
+  background-color: rgb(45, 45, 45);
+  border: none;
+  padding-right: 30px;
 }
 
 .location-search {
-position: absolute;
-top: 0;
-right: 0;
-height: 100%;
-min-width: 30px;
-background-color: rgb(35, 35, 35);
-padding: 5px;
-color: inherit;
-cursor: pointer;
-border: none;
-border-top-right-radius: 20px;
-border-bottom-right-radius: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  min-width: 30px;
+  background-color: rgb(35, 35, 35);
+  padding: 5px;
+  color: inherit;
+  cursor: pointer;
+  border: none;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 /* .about {
