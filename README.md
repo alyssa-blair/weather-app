@@ -1,3 +1,2 @@
 # weather-app
-
-## In-progress
+In progress
