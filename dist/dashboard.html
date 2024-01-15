@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Weather App Dashboard</title>
+    <link rel="stylesheet" href="src/dashboard/dashboard.css" />
+  </head>
+  <body>
+    <div id="widgets" class="widgets">
+      <div id="current-weather" class="current-weather">
+        <div
+          id="current-weather-temperature"
+          class="current-weather-temperature"
+        >
+          <h1></h1>
+          <p id="current-weather-temp"></p>
+        </div>
+        <div id="current-weather-breakdown" class="current-weather-breakdown">
+          <h1>24-Hour Breakdown</h1>
+          <div id="current-weather-hourly"></div>
+        </div>
+      </div>
+      <div id="weekly-weather" class="weekly-weather">
+        <h1>7-day forecast</h1>
+        <div id="day0" class="weekday" onclick="generateGraph(0)">
+          <h2 class="weekday-date">Today</h2>
+          <div class="weekday-info">
+            <h3 class="min-temp" id="minTemp0"></h3>
+            <div class="temperature-bar">
+              <span id="range0"></span>
+            </div>
+            <h3 class="max-temp" id="maxTemp0"></h3>
+          </div>
+        </div>
+        <div id="day1" class="weekday" onclick="generateGraph(1)">
+          <h2 class="weekday-date"></h2>
+          <div class="weekday-info">
+            <h3 class="min-temp" id="minTemp1"></h3>
+            <div class="temperature-bar">
+              <span id="range1"></span>
+            </div>
+            <h3 class="max-temp" id="maxTemp1"></h3>
+          </div>
+        </div>
+        <div id="day2" class="weekday" onclick="generateGraph(2)">
+          <h2 class="weekday-date"></h2>
+          <div class="weekday-info">
+            <h3 class="min-temp" id="minTemp2"></h3>
+            <div class="temperature-bar">
+              <span id="range2"></span>
+            </div>
+            <h3 class="max-temp" id="maxTemp2"></h3>
+          </div>
+        </div>
+        <div id="day3" class="weekday" onclick="generateGraph(3)">
+          <h2 class="weekday-date"></h2>
+          <div class="weekday-info">
+            <h3 class="min-temp" id="minTemp3"></h3>
+            <div class="temperature-bar">
+              <span id="range3"></span>
+            </div>
+            <h3 class="max-temp" id="maxTemp3"></h3>
+          </div>
+        </div>
+        <div id="day4" class="weekday" onclick="generateGraph(4)">
+          <h2 class="weekday-date"></h2>
+          <div class="weekday-info">
+            <h3 class="min-temp" id="minTemp4"></h3>
+            <div class="temperature-bar">
+              <span id="range4"></span>
+            </div>
+            <h3 class="max-temp" id="maxTemp4"></h3>
+          </div>
+        </div>
+        <div id="day5" class="weekday" onclick="generateGraph(5)">
+          <h2 class="weekday-date"></h2>
+          <div class="weekday-info">
+            <h3 class="min-temp" id="minTemp5"></h3>
+            <div class="temperature-bar">
+              <span id="range5"></span>
+            </div>
+            <h3 class="max-temp" id="maxTemp5"></h3>
+          </div>
+        </div>
+        <div id="day6" class="weekday" onclick="generateGraph(6)">
+          <h2 class="weekday-date"></h2>
+          <div class="weekday-info">
+            <h3 class="min-temp" id="minTemp6"></h3>
+            <div class="temperature-bar">
+              <span id="range6"></span>
+            </div>
+            <h3 class="max-temp" id="maxTemp6"></h3>
+          </div>
+        </div>
+      </div>
+      <div id="humidity" class="side-widgets">
+        <h1>Humidity</h1>
+        <h2></h2>
+      </div>
+      <div id="precipitation" class="side-widgets">
+        <h1>Precipitation</h1>
+        <h2></h2>
+        <p>In the last hour</p>
+      </div>
+      <div id="precipitation-probability" class="side-widgets">
+        <h1>Chance of Precipitation</h1>
+        <h2></h2>
+      </div>
+      <div id="wind-speed" class="side-widgets">
+        <h1>Wind Speed</h1>
+        <h2></h2>
+      </div>
+      <div id="feels-like" class="side-widgets">
+        <h1>Feels Like</h1>
+        <h2></h2>
+      </div>
+    </div>
+
+    <div id="plot-window" data-date="none">
+      <div id="weather-plot"></div>
+      <button id="plot-close" class="close-button">Close</button>
+    </div>
+
+        <script rel="preload" type="module" src="src/dashboard/dashboard.js"></script>
+        <script rel="preload" type="module" src="node_modules/plotly.js/dist/plotly.min.js"></script>
+    </body>
+</html>
