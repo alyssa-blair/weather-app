@@ -1,4 +1,4 @@
-import WeatherTime from "./WeatherTime.js";
+import WeatherTime from "../dashboard/WeatherTime.js";
 import { fillWidgets } from "./widgets.js";
 
 export function currentWeatherTemp(data) {
