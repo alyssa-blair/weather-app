@@ -2,6 +2,8 @@ import HourlyWeather from "../currentWeather/current";
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import LocationForm from "./locationForm.jsx";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 
 // document.addEventListener("DOMContentLoaded", function () {
 //   var form = document.getElementById("location-form");
@@ -12,31 +14,6 @@ import LocationForm from "./locationForm.jsx";
 
 //   });
 // });
-
-// const LocationForm = () => {
-//   const [formData, setFormData] = useState(null);
-
-//   const formUpdate = (elem) => {
-//     setFormData(elem.target);
-//   };
-
-//   const formSubmit = (elem) => {
-//     elem.preventDefault();
-//   };
-
-//   return (
-//     <form id="location-form" class="location-form">
-//       <input
-//         id="location-input"
-//         type="text"
-//         class="location-input"
-//         placeholder="Enter a Location"
-//         onkeypress={searchLocation()}
-//       />
-//       <input type="submit" class="location-search" value="&#x1F50E;&#xFE0E;" />
-//     </form>
-//   );
-// };
 
 // function showLocation(position) {
 //   console.log(position.coords.latitude);
@@ -103,4 +80,10 @@ import LocationForm from "./locationForm.jsx";
 
 // export default LocationSearch;
 
-ReactDOM.render(<LocationForm />, document.getElementById("location-form"));
+// ReactDOM.createRoot(<LocationForm />, document.getElementById("location-form"));
+const root = createRoot(document.getElementById("location-form"));
+root.render(
+  <BrowserRouter>
+    <LocationForm />
+  </BrowserRouter>
+);
