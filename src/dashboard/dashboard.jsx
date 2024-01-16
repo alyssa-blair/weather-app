@@ -2,7 +2,7 @@ import { fillWeekdays } from "../weeklyWeather/weekdays.js";
 import React from "react";
 import ReactDOM from "react-dom";
 import CurrentWeather from "./currentWeather.jsx";
-
+import { createRoot } from "react-dom/client";
 // console.log("here");
 // window.onload = function () {
 //   fetchData();
@@ -71,23 +71,24 @@ import CurrentWeather from "./currentWeather.jsx";
 //   return params;
 // }
 
-// function fetchData(date = null) {
-//   const params = getParams();
-//   const api = `https://api.open-meteo.com/v1/forecast?latitude=${params.latitude}&longitude=${params.longitude}&timezone=${params.timezone}&current=${params.current}&hourly=${params.hourly}`;
+export function fetchData(date = null) {
+  console.log("here");
+  const params = getParams();
+  const api = `https://api.open-meteo.com/v1/forecast?latitude=${params.latitude}&longitude=${params.longitude}&timezone=${params.timezone}&current=${params.current}&hourly=${params.hourly}`;
 
-//   fetch(api)
-//     .then((response) => {
-//       if (!response.ok)
-//         throw new Error(`HTTP Error, Status: ${response.status}`);
-//       return response.json();
-//     })
-//     .then((data) => {
-//       fillWeekdays(data, date);
-//     })
-//     .catch((error) => {
-//       console.error("Error fetching data: ", error);
-//     });
-// }
+  fetch(api)
+    .then((response) => {
+      if (!response.ok)
+        throw new Error(`HTTP Error, Status: ${response.status}`);
+      return response.json();
+    })
+    .then((data) => {
+      fillWeekdays(data, date);
+    })
+    .catch((error) => {
+      console.error("Error fetching data: ", error);
+    });
+}
 
 // function showLocation(position) {
 //   const latitude = position.coords.latitude.toString();
@@ -96,5 +97,10 @@ import CurrentWeather from "./currentWeather.jsx";
 //   localStorage.setItem("latitude", latitude);
 //   localStorage.setItem("longitude", longitude);
 // }
+const dashboard = () => {
+  return <h1>Dashboard</h1>;
+};
 
-ReactDOM.render(<CurrentWeather />, document.getElementById("current-weather"));
+export default dashboard;
+// const root = createRoot(document.getElementById("location-form"));
+// root.render(<CurrentWeather />);

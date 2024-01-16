@@ -15,11 +15,12 @@ const config = {
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, "dist"),
+      directory: path.join(__dirname, "dist/"),
     },
     open: true,
     host: "localhost",
     port: 3000,
+    hot: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
