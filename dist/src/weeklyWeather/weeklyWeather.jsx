@@ -106,13 +106,14 @@ import React from "react";
 //   return [min, max];
 // }
 
-const WeeklyWeather = () => {
+const WeeklyWeather = (props) => {
+  console.log(props);
   const dayNums = [0, 1, 2, 3, 4, 5, 6]; // update to be in relation to today
 
   const ls = [];
 
   dayNums.forEach((dayNum) => {
-    ls.push(<Weekday dayNum={dayNum} />);
+    ls.push(<Weekday dayNum={dayNum} data={props.data} />);
   });
 
   return (

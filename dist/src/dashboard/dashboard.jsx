@@ -137,28 +137,10 @@ function Dashboard() {
   //   //     console.error("Error fetching data: ", error);
   //   //   });
   // };
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const params = getParams();
-  //     const api = `https://api.open-meteo.com/v1/forecast?latitude=${params.latitude}&longitude=${params.longitude}&timezone=${params.timezone}&current=${params.current}&hourly=${params.hourly}`;
-
-  //     return fetch(api)
-  //       .then((response) => {
-  //         if (!response.ok)
-  //           throw new Error(`HTTP Error, Status: ${response.status}`);
-  //         return response.json();
-  //       })
-  //       .then((data) => {
-  //         // fillWeekdays(data, date);
-  //         setData(data);
-  //       })
-  //       .catch((error) => {
-  //         console.error("Error fetching data: ", error);
-  //       });
-  //   };
 
   //   fetchData(); // Trigger the data fetching function when the component mounts
   // }); // The empty dependency array ensures that this effect runs once when the component mounts
+
   useEffect(() => {
     fetchDataFunction().then((d) => {
       if (!data) setData(d);
@@ -170,7 +152,7 @@ function Dashboard() {
     <div id="dashboard">
       <div id="widgetsOne" className="widgets">
         <div id="current-weather" className="current-weather"></div>
-        <WeeklyWeather />
+        {data && <WeeklyWeather data={data} />}
         <div id="widgets" className="widgets">
           {data && <Widgets data={data} />}
         </div>
