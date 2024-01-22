@@ -15,7 +15,7 @@ const LocationForm = () => {
     // const latitude = encodeURIComponent(localStorage.getItem("latitude"));
     // const longitude = encodeURIComponent(localStorage.getItem("longitude"));
     elem.preventDefault();
-    navigate("/dashboard");
+    navigate("dashboard");
   };
 
   return (

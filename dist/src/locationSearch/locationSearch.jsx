@@ -89,19 +89,11 @@ import Dashboard from "../dashboard/dashboard.jsx";
 const MainApp = () => {
   return (
     <Router>
-      {/* <nav>
-        <Link to="/"></Link>
-        <Link to="/dashboard"></Link>
-      </nav> */}
       <Routes>
         <Route path="/" element={<LocationForm />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
-    /* <Routes>
-        <Route path="/" component={<LocationForm />} />
-        <Route path="/dashboard" component={Dashboard} />
-      </Routes> */
   );
 };
 

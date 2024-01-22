@@ -42,15 +42,15 @@ h4 {
   margin: 0px;
 }
 
+ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
 .location-form {
   position: relative;
   display: inline-block;
   top: 245px;
-}
-
-#location-form h1 {
-  position: relative;
-  top: 250px;
 }
 
 .location-input {

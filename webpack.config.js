@@ -9,7 +9,7 @@ const isProduction = process.env.NODE_ENV == "development";
 const stylesHandler = MiniCssExtractPlugin.loader;
 
 const config = {
-  entry: ["./src/locationSearch/locationSearch.jsx"],
+  entry: ["./dist/src/locationSearch/locationSearch.jsx"],
   output: {
     path: path.resolve(__dirname, "dist/"),
   },
@@ -21,6 +21,8 @@ const config = {
     host: "localhost",
     port: 3000,
     hot: true,
+    historyApiFallback: true,
+    // contentBase: "./",
   },
   plugins: [
     new HtmlWebpackPlugin({

@@ -34,7 +34,8 @@ import React from "react";
 //   elem.innerHTML = Math.round(feelsLike) + "\u00B0";
 // }
 
-const widgets = (data) => {
+const Widgets = (data) => {
+  console.log(data);
   return (
     <div>
       <div id="humidity" class="side-widgets">
@@ -61,3 +62,5 @@ const widgets = (data) => {
     </div>
   );
 };
+
+export default Widgets;
