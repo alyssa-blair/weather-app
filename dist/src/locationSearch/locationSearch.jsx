@@ -98,5 +98,5 @@ const MainApp = () => {
 };
 
 // ReactDOM.createRoot(<LocationForm />, document.getElementById("location-form"));
-const root = createRoot(document.getElementById("location-form"));
+const root = createRoot(document.getElementById("app-layout"));
 root.render(<MainApp />);

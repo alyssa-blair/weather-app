@@ -1,4 +1,4 @@
-import { formatDate } from "../dashboard/dateFormat.js";
+import { formatDate } from "../dashboard/dateFormat.jsx";
 
 export function createGraph(date, times, temps) {
   const nextDayFormatted = formatDate(date);

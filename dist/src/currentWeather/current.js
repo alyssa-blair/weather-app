@@ -1,5 +1,6 @@
-import WeatherTime from "../dashboard/WeatherTime.js";
-import { fillWidgets } from "./widgets.js";
+import WeatherTime from "../dashboard/WeatherTime.jsx";
+import { fillWidgets } from "./widgets.jsx";
+import React from "react";
 
 export function currentWeatherTemp(data) {
   var elem = document.getElementById("current-weather-temp");
@@ -28,8 +29,48 @@ export function currentWeatherBreakdown(data, temps, times) {
     count++;
   }
 
-  fillWidgets(data);
+  // fillWidgets(data);
 }
+
+const HourlyWeather = ({ data, temps, times }) => {
+  const [currentTime, setCurrentTime] = useState(null);
+  const [hourlyData, setHourlyData] = useState([]);
+
+  useEffect(() => {
+    const weatherTime = new WeatherTime(...data.current.time.split(/-|T|:/));
+    setCurrentTime(weatherTime);
+
+    const i = times.indexOf(currentTime.formatNoMinutes());
+
+    const newHourlyData = times.splice(i, i + 24).map((time, index) => {
+      console.log(index);
+      var time = new WeatherTime(...time.split(/-|T|:/));
+
+      return {
+        index: index,
+        time: time.twelveHourTime(),
+        date: time.monthDay(),
+        temp: Math.round(temps[i]),
+        weatherCode: getWeatherCode(data.hourly.weather_code[i]),
+      };
+    });
+
+    setHourlyData(newHourlyData);
+  });
+
+  return (
+    <div>
+      {hourlyData.map(({ index, time, date, temp, weatherCode }) => {
+        <div id={`hour${count}`}>
+          <div id="hourly-temp">{temp + "\u00B0"}</div>
+          <div id="hourly-emoji">{weatherCode}</div>
+          <h3>{time}</h3>
+          <h4>{date}</h4>
+        </div>;
+      })}
+    </div>
+  );
+};
 
 function getWeatherCode(weatherCode) {
   // TODO: replace with weather codes
@@ -45,3 +86,5 @@ function getWeatherCode(weatherCode) {
 
   return code;
 }
+
+export default HourlyWeather;

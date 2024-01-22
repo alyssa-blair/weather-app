@@ -1,9 +1,8 @@
-import fetchData from "./dashboard.jsx";
+import fetchData from "../dashboard/dashboard.jsx";
 import React from "react";
 
 const CurrentWeather = () => {
-  // console.log("here");
-  fetchData();
+  // fetchData();
 
   return (
     <div>

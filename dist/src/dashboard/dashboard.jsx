@@ -1,7 +1,7 @@
 import WeeklyWeather from "../weeklyWeather/weeklyWeather.jsx";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import CurrentWeather from "./currentWeather.jsx";
+import CurrentWeather from "../currentWeather/currentWeather.jsx";
 import { createRoot } from "react-dom/client";
 import Widgets from "../currentWeather/widgets.jsx";
 
@@ -67,13 +67,13 @@ function getParams() {
     hourly:
       "temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code,precipitation_probability",
     current:
-      "temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code,apparent_temperature,precipitation",
+      "temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code,apparent_temperature,precipitation,precipitation_probability",
   };
 
   return params;
 }
 
-async function fetchData(date = null) {
+async function fetchDataFunction(date = null) {
   const params = getParams();
   const api = `https://api.open-meteo.com/v1/forecast?latitude=${params.latitude}&longitude=${params.longitude}&timezone=${params.timezone}&current=${params.current}&hourly=${params.hourly}`;
 
@@ -84,8 +84,13 @@ async function fetchData(date = null) {
       return response.json();
     })
     .then((data) => {
+      console.log(data);
       // fillWeekdays(data, date);
-      return data;
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(data);
+        });
+      }, 1500);
     })
     .catch((error) => {
       console.error("Error fetching data: ", error);
@@ -100,18 +105,74 @@ function showLocation(position) {
   localStorage.setItem("longitude", longitude);
 }
 
-const Dashboard = async () => {
+function Dashboard() {
   // const [data, setData] = useState(null);
-  const data = await fetchData();
+  // const data = fetchData();
 
-  console.log(gotData);
+  const [data, setData] = useState(null);
+
+  // const fetchData = async () => {
+  //   try {
+  //     const result = await fetchDataFunction();
+  //     console.log(result);
+  //     setData(result);
+  //   } catch (error) {
+  //     console.log("error: ", error);
+  //   }
+  //   // const params = getParams();
+  //   // const api = `https://api.open-meteo.com/v1/forecast?latitude=${params.latitude}&longitude=${params.longitude}&timezone=${params.timezone}&current=${params.current}&hourly=${params.hourly}`;
+
+  //   // await fetch(api)
+  //   //   .then((response) => {
+  //   //     if (!response.ok)
+  //   //       throw new Error(`HTTP Error, Status: ${response.status}`);
+  //   //     return response.json();
+  //   //   })
+  //   //   .then((data) => {
+  //   //     // fillWeekdays(data, date);
+  //   //     console.log("here");
+  //   //     setData(data);
+  //   //   })
+  //   //   .catch((error) => {
+  //   //     console.error("Error fetching data: ", error);
+  //   //   });
+  // };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const params = getParams();
+  //     const api = `https://api.open-meteo.com/v1/forecast?latitude=${params.latitude}&longitude=${params.longitude}&timezone=${params.timezone}&current=${params.current}&hourly=${params.hourly}`;
+
+  //     return fetch(api)
+  //       .then((response) => {
+  //         if (!response.ok)
+  //           throw new Error(`HTTP Error, Status: ${response.status}`);
+  //         return response.json();
+  //       })
+  //       .then((data) => {
+  //         // fillWeekdays(data, date);
+  //         setData(data);
+  //       })
+  //       .catch((error) => {
+  //         console.error("Error fetching data: ", error);
+  //       });
+  //   };
+
+  //   fetchData(); // Trigger the data fetching function when the component mounts
+  // }); // The empty dependency array ensures that this effect runs once when the component mounts
+  useEffect(() => {
+    fetchDataFunction().then((d) => {
+      if (!data) setData(d);
+    });
+  }, []);
+
+  console.log(data);
   return (
     <div id="dashboard">
       <div id="widgetsOne" className="widgets">
         <div id="current-weather" className="current-weather"></div>
         <WeeklyWeather />
         <div id="widgets" className="widgets">
-          <Widgets data={Promise.resolve(data)} />
+          {data && <Widgets data={data} />}
         </div>
       </div>
       {/* <div id="humidity" className="side-widgets">
@@ -138,7 +199,7 @@ const Dashboard = async () => {
       </div> */}
     </div>
   );
-};
+}
 
 export default Dashboard;
 // const root = createRoot(document.getElementById("location-form"));

@@ -35,29 +35,29 @@ import React from "react";
 // }
 
 const Widgets = (data) => {
-  console.log(data);
+  const widgetData = data.data;
   return (
     <div>
-      <div id="humidity" class="side-widgets">
+      <div id="humidity" className="side-widgets">
         <h1>Humidity</h1>
-        <h2>{data.current.relative_humidity_2m}</h2>
+        <h2>{widgetData.current.relative_humidity_2m}</h2>
       </div>
-      <div id="precipitation" class="side-widgets">
+      <div id="precipitation" className="side-widgets">
         <h1>Precipitation</h1>
-        <h2>{data.current.precipitation}</h2>
+        <h2>{widgetData.current.precipitation}</h2>
         <p>In the last hour</p>
       </div>
-      <div id="precipitation-probability" class="side-widgets">
+      <div id="precipitation-probability" className="side-widgets">
         <h1>Chance of Precipitation</h1>
-        <h2>{data.current.precipitation_probability[0]}</h2>
+        <h2>{widgetData.current.precipitation_probability}</h2>
       </div>
-      <div id="wind-speed" class="side-widgets">
+      <div id="wind-speed" className="side-widgets">
         <h1>Wind Speed</h1>
-        <h2>{data.current.wind_speed_10m}</h2>
+        <h2>{widgetData.current.wind_speed_10m}</h2>
       </div>
-      <div id="feels-like" class="side-widgets">
+      <div id="feels-like" className="side-widgets">
         <h1>Feels Like</h1>
-        <h2>{data.current.apparent_temperature}</h2>
+        <h2>{widgetData.current.apparent_temperature}</h2>
       </div>
     </div>
   );

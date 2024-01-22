@@ -12,6 +12,7 @@ const config = {
   entry: ["./dist/src/locationSearch/locationSearch.jsx"],
   output: {
     path: path.resolve(__dirname, "dist/"),
+    publicPath: "/",
   },
   devServer: {
     static: {
