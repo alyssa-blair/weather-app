@@ -24,9 +24,13 @@ const CurrentWeather = (props) => {
       <div id="current-weather-breakdown" className="current-weather-breakdown">
         <h1>24-Hour Breakdown</h1>
         <div id="current-weather-hourly">
-          {hourlyElems.map((day) => (
-            <HourlyWeather data={props.data} day={day} index={index} />
-          ))}
+          <ul>
+            {hourlyElems.map((day) => (
+              <li key={`hourly${day}`}>
+                <HourlyWeather data={props.data} day={day} index={index} />
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>

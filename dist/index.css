@@ -47,6 +47,14 @@ ul {
   padding-left: 0px;
 }
 
+#current-weather-hourly li {
+  display: inline-block;
+}
+
+#current-weather-hourly ul {
+  margin: 0px;
+}
+
 .location-form {
   position: relative;
   display: inline-block;

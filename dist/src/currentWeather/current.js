@@ -1,6 +1,16 @@
 import WeatherTime from "../dashboard/WeatherTime.jsx";
 import { fillWidgets } from "./widgets.jsx";
 import React from "react";
+import {
+  WiCloudy,
+  WiSprinkle,
+  WiDaySunny,
+  WiFog,
+  WiRain,
+  WiSnow,
+  WiThunderstorm,
+  WiHail,
+} from "react-icons/wi";
 
 export function currentWeatherTemp(data) {
   var elem = document.getElementById("current-weather-temp");
@@ -73,16 +83,17 @@ export function currentWeatherBreakdown(data, temps, times) {
 // };
 
 export function getWeatherCode(weatherCode) {
-  // TODO: replace with weather codes
   var code = "";
-  if (weatherCode == 0) code = "&#x26C4";
-  else if (weatherCode <= 3) code = "&#x26C5";
-  else if (weatherCode <= 48) code = "fog";
-  else if (weatherCode <= 55) code = "drizzle";
-  else if (weatherCode <= 65 || 82 >= weatherCode >= 80) code = "rain";
-  else if (weatherCode <= 67) code = "freezing rain";
-  else if (weatherCode <= 86) code = "snow fall";
-  else if (weatherCode == 95) code = "thunderstorm";
+  if (weatherCode == 0) code = <WiDaySunny />;
+  else if (weatherCode <= 3) code = <WiCloudy />;
+  else if (weatherCode <= 48) code = <WiFog />;
+  else if (weatherCode <= 55)
+    code = <WiSprinkle />; //drizzle
+  else if (weatherCode <= 65 || 82 >= weatherCode >= 80) code = <WiRain />;
+  else if (weatherCode <= 67)
+    code = <WiHail />; // freezing rain
+  else if (weatherCode <= 86) code = <WiSnow />;
+  else if (weatherCode == 95) code = <WiThunderstorm />;
 
   return code;
 }

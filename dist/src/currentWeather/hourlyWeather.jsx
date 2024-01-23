@@ -10,19 +10,18 @@ const HourlyWeather = (props) => {
 
   //   const hourlyElems = Array.from({ length: 24 }, (_, index) => index + 1);
   //   const weatherCode = ;
-  const weatherCode = 1;
+  const weatherCode = 1; // update to get from api
   const temp = "";
   console.log(props);
   return (
     <div id={`hour${props.day}`} className="hourly-breakdown">
       <h4>{time.monthDay()}</h4>
       <h3>{time.twelveHourTime()}</h3>
-      <p id="hourly-emoji">{`${getWeatherCode(weatherCode)}`}</p>
+      <p id="hourly-emoji">{getWeatherCode(weatherCode)}</p>
       <p id="hourly-temp">{temp}</p>
     </div>
   );
 };
-
 export default HourlyWeather;
 // var time = new WeatherTime(...times[i + count].split(/-|T|:/));
 // var temp = Math.round(temps[i + count]);
