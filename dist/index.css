@@ -274,10 +274,12 @@ ul {
 
 .min-temp {
   display: inline-block;
+  padding: 2px;
 }
 
 .max-temp {
   display: inline-block;
+  padding: 2px;
 }
 
 #plot-window {

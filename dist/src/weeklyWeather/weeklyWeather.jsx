@@ -5,7 +5,7 @@ import {
 } from "../currentWeather/current.js";
 import { createGraph } from "./graph.js";
 import Weekday from "./weekday.jsx";
-import React from "react";
+import React, { useState } from "react";
 
 // export function fillWeekdays(data, graphDate = null) {
 //   var date = new Date();
@@ -106,14 +106,59 @@ import React from "react";
 //   return [min, max];
 // }
 
+function getMinMaxTemps(data, dayNum) {
+  const temps = data.hourly.temperature_2m;
+  const times = data.hourly.time;
+
+  var date = new Date();
+  date = new Date(date.setDate(date.getDate() + dayNum));
+  const dateFormatted = formatDate(date, 0);
+  const searchDate = dateFormatted.substring(0, 10);
+
+  const startIndex = times.indexOf(searchDate + "T00:00");
+
+  var min;
+  var max;
+
+  for (var i = startIndex; i < startIndex + 24; i++) {
+    if (times[i].startsWith(searchDate)) {
+      if (!min || temps[i] < min) min = Math.round(temps[i]);
+
+      if (!max || temps[i] > max) max = Math.round(temps[i]);
+    }
+  }
+
+  return [min, max];
+}
+
 const WeeklyWeather = (props) => {
-  console.log(props);
-  const dayNums = [0, 1, 2, 3, 4, 5, 6]; // update to be in relation to today
+  const ids = [0, 1, 2, 3, 4, 5, 6]; // update to be in relation to today
 
   const ls = [];
+  // const [totalMin, setTotalMin] = useState(null);
+  // const [totalMax, setTotalMax] = useState(null);
+  const date = new Date();
+  var day = date.getDay();
 
-  dayNums.forEach((dayNum) => {
-    ls.push(<Weekday dayNum={dayNum} data={props.data} />);
+  var totalMin = null;
+  var totalMax = null;
+
+  ids.forEach((id) => {
+    var [min, max] = getMinMaxTemps(props.data, day);
+
+    totalMin = totalMin ? Math.min(totalMin, min) : min;
+    totalMax = totalMax ? Math.max(totalMax, max) : max;
+
+    ls.push({
+      id: id,
+      day: day,
+      currentMin: min,
+      currentMax: max,
+      // date: day,
+    });
+
+    day = (day + 1) % 7;
+    // ls.push(<Weekday day={day} data={props.data} currentMin={min} />);
   });
 
   return (
@@ -121,7 +166,17 @@ const WeeklyWeather = (props) => {
       <h1>7-day forecast</h1>
       <ul>
         {ls.map((weekday) => (
-          <li key={weekday.props.dayNum}>{weekday}</li>
+          <li key={weekday.day}>
+            <Weekday
+              day={weekday.day}
+              data={props.data}
+              currentMin={weekday.currentMin}
+              currentMax={weekday.currentMax}
+              totalMin={totalMin}
+              totalMax={totalMax}
+              id={weekday.id}
+            />
+          </li>
         ))}
       </ul>
     </div>

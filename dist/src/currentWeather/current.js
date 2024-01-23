@@ -32,47 +32,47 @@ export function currentWeatherBreakdown(data, temps, times) {
   // fillWidgets(data);
 }
 
-const HourlyWeather = ({ data, temps, times }) => {
-  const [currentTime, setCurrentTime] = useState(null);
-  const [hourlyData, setHourlyData] = useState([]);
+// const HourlyWeather = ({ data, temps, times }) => {
+//   const [currentTime, setCurrentTime] = useState(null);
+//   const [hourlyData, setHourlyData] = useState([]);
 
-  useEffect(() => {
-    const weatherTime = new WeatherTime(...data.current.time.split(/-|T|:/));
-    setCurrentTime(weatherTime);
+//   useEffect(() => {
+//     const weatherTime = new WeatherTime(...data.current.time.split(/-|T|:/));
+//     setCurrentTime(weatherTime);
 
-    const i = times.indexOf(currentTime.formatNoMinutes());
+//     const i = times.indexOf(currentTime.formatNoMinutes());
 
-    const newHourlyData = times.splice(i, i + 24).map((time, index) => {
-      console.log(index);
-      var time = new WeatherTime(...time.split(/-|T|:/));
+//     const newHourlyData = times.splice(i, i + 24).map((time, index) => {
+//       console.log(index);
+//       var time = new WeatherTime(...time.split(/-|T|:/));
 
-      return {
-        index: index,
-        time: time.twelveHourTime(),
-        date: time.monthDay(),
-        temp: Math.round(temps[i]),
-        weatherCode: getWeatherCode(data.hourly.weather_code[i]),
-      };
-    });
+//       return {
+//         index: index,
+//         time: time.twelveHourTime(),
+//         date: time.monthDay(),
+//         temp: Math.round(temps[i]),
+//         weatherCode: getWeatherCode(data.hourly.weather_code[i]),
+//       };
+//     });
 
-    setHourlyData(newHourlyData);
-  });
+//     setHourlyData(newHourlyData);
+//   });
 
-  return (
-    <div>
-      {hourlyData.map(({ index, time, date, temp, weatherCode }) => {
-        <div id={`hour${count}`}>
-          <div id="hourly-temp">{temp + "\u00B0"}</div>
-          <div id="hourly-emoji">{weatherCode}</div>
-          <h3>{time}</h3>
-          <h4>{date}</h4>
-        </div>;
-      })}
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       {hourlyData.map(({ index, time, date, temp, weatherCode }) => {
+//         <div id={`hour${count}`}>
+//           <div id="hourly-temp">{temp + "\u00B0"}</div>
+//           <div id="hourly-emoji">{weatherCode}</div>
+//           <h3>{time}</h3>
+//           <h4>{date}</h4>
+//         </div>;
+//       })}
+//     </div>
+//   );
+// };
 
-function getWeatherCode(weatherCode) {
+export function getWeatherCode(weatherCode) {
   // TODO: replace with weather codes
   var code = "";
   if (weatherCode == 0) code = "&#x26C4";
@@ -87,4 +87,4 @@ function getWeatherCode(weatherCode) {
   return code;
 }
 
-export default HourlyWeather;
+// export default HourlyWeather;

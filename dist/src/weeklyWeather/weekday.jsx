@@ -54,53 +54,52 @@ import { formatDate } from "../dashboard/dateFormat.jsx";
 //     }
 //   }
 
-function getMinMaxTemps(data, dayNum) {
-  const temps = data.hourly.temperature_2m;
-  const times = data.hourly.time;
+// function getMinMaxTemps(data, day) {
+//   const temps = data.hourly.temperature_2m;
+//   const times = data.hourly.time;
 
-  var date = new Date();
-  date = new Date(date.setDate(date.getDate() + dayNum));
-  const dateFormatted = formatDate(date, 0);
-  const searchDate = dateFormatted.substring(0, 10);
+//   var date = new Date();
+//   date = new Date(date.setDate(date.getDate() + day));
+//   const dateFormatted = formatDate(date, 0);
+//   const searchDate = dateFormatted.substring(0, 10);
 
-  const startIndex = times.indexOf(searchDate + "T00:00");
+//   const startIndex = times.indexOf(searchDate + "T00:00");
 
-  var min;
-  var max;
+//   var min;
+//   var max;
 
-  for (var i = startIndex; i < startIndex + 24; i++) {
-    if (times[i].startsWith(searchDate)) {
-      if (!min || temps[i] < min) min = Math.round(temps[i]);
+//   for (var i = startIndex; i < startIndex + 24; i++) {
+//     if (times[i].startsWith(searchDate)) {
+//       if (!min || temps[i] < min) min = Math.round(temps[i]);
 
-      if (!max || temps[i] > max) max = Math.round(temps[i]);
-    }
-  }
-
-  return [min, max];
-}
-
-// function fillWeekdayBars(mins, maxs) {
-//   var min = Math.min.apply(null, mins);
-//   var max = Math.max.apply(null, maxs);
-
-//   const range = max - min != 0 ? max - min : 1;
-//   const sectionSize = 150 / range;
-
-//   for (var i = 0; i < 7; i++) {
-//     var elem = document.getElementById(`range${i}`);
-//     var curMin = mins[i];
-//     var curMax = maxs[i];
-
-//     var curRange = curMax - curMin;
-//     if (curRange == 0) curRange = 1;
-
-//     elem.style.width = `${curRange * sectionSize}px`;
-//     elem.style.left = `${(curMin - min) * sectionSize}px`;
+//       if (!max || temps[i] > max) max = Math.round(temps[i]);
+//     }
 //   }
+
+//   return [min, max];
 // }
 
+function fillWeekdayBars(mins, maxs) {
+  var min = Math.min.apply(null, mins);
+  var max = Math.max.apply(null, maxs);
+
+  const range = max - min != 0 ? max - min : 1;
+  const sectionSize = 150 / range;
+
+  for (var i = 0; i < 7; i++) {
+    var elem = document.getElementById(`range${i}`);
+    var curMin = mins[i];
+    var curMax = maxs[i];
+
+    var curRange = curMax - curMin;
+    if (curRange == 0) curRange = 1;
+
+    elem.style.width = `${curRange * sectionSize}px`;
+    elem.style.left = `${(curMin - min) * sectionSize}px`;
+  }
+}
+
 const Weekday = (props) => {
-  console.log(props);
   const [weekdayName, setWeekdayName] = useState("");
 
   const days = [
@@ -113,36 +112,54 @@ const Weekday = (props) => {
     "Saturday",
   ];
 
-  const minmax = getMinMaxTemps(props.data, props.dayNum);
-  var [min, max] = minmax;
+  console.log(props);
+  // const minmax = getMinMaxTemps(props.data, props.day);
+  // var [min, max] = minmax;
 
   // console.log(min, max);
 
   //   const setWeekday = () => {
-  //     return setWeekdayName(days[props.dayNum]);
+  //     return setWeekdayName(days[props.day]);
   //   };
 
-  // need to figure out how to fill bars
-  // left position relies on the min of all weekdays
-  // need to figure out if I can store this somehow, might require another subcomponent
+  // fillWeekdayBars(props.currentMin, props.currentMax);
 
+  var curRange = props.currentMax - props.currentMin;
+  if (curRange == 0) curRange = 1;
+
+  var totalRange = props.totalMax - props.totalMin;
+  if (totalRange == 0) totalRange = 1;
+
+  const sectionSize = 150 / totalRange;
+
+  // elem.style.width = `${curRange * sectionSize}px`;
+  // elem.style.left = `${(curMin - min) * sectionSize}px`;
   return (
     <div
-      id={`day${props.dayNum}`}
-      key={`day${props.dayNum}`}
+      id={`day${props.day}`}
+      key={`day${props.day}`}
       className="weekday"
-      //   onclick={generateGraph(props.dayNum)}
+      //   onclick={generateGraph(props.day)}
     >
-      <h2 className="weekday-date">{days[props.dayNum]}</h2>
+      <h2 className="weekday-date">
+        {props.id == 0 ? "Today" : days[props.day]}
+      </h2>
       <div className="weekday-info">
-        <h3 className="min-temp" id={`minTemp${props.dayNum}`}></h3>
+        <h3 className="min-temp" id={`minTemp${props.day}`}>
+          {props.currentMin + "\u00B0"}
+        </h3>
         <div className="temperature-bar">
           <span
-            id={`range${props.dayNum}`}
-            // style={`width=${minmaxRange * sectionSize}px; left=${(min)}`}
+            id={`range${props.day}`}
+            style={{
+              width: `${curRange * sectionSize}px`,
+              left: `${(props.currentMin - props.totalMin) * sectionSize}px`,
+            }}
           ></span>
         </div>
-        <h3 className="max-temp" id={`maxTemp${props.dayNum}`}></h3>
+        <h3 className="max-temp" id={`maxTemp${props.day}`}>
+          {props.currentMax + "\u00B0"}
+        </h3>
       </div>
     </div>
   );

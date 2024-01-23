@@ -151,34 +151,14 @@ function Dashboard() {
   return (
     <div id="dashboard">
       <div id="widgetsOne" className="widgets">
-        <div id="current-weather" className="current-weather"></div>
+        <div id="current-weather" className="current-weather">
+          {data && <CurrentWeather data={data} />}
+        </div>
         {data && <WeeklyWeather data={data} />}
         <div id="widgets" className="widgets">
           {data && <Widgets data={data} />}
         </div>
       </div>
-      {/* <div id="humidity" className="side-widgets">
-        <h1>Humidity</h1>
-        <h2></h2>
-      </div>
-      <div id="precipitation" className="side-widgets">
-        <h1>Precipitation</h1>
-        <h2></h2>
-        <p>In the last hour</p>
-      </div>
-      <div id="precipitation-probability" className="side-widgets">
-        <h1>Chance of Precipitation</h1>
-        <h2></h2>
-      </div>
-      <div id="wind-speed" className="side-widgets">
-        <h1>Wind Speed</h1>
-        <h2></h2>
-      </div>
-      <div id="feels-like" className="side-widgets">
-        <h1>Feels Like</h1>
-        <h2></h2>
-        rel="preload"
-      </div> */}
     </div>
   );
 }
