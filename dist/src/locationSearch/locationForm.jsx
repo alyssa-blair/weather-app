@@ -19,7 +19,7 @@ const LocationForm = () => {
   };
 
   return (
-    <div>
+    <div id="homepage">
       <h1>Weather App</h1>
       <form id="location-form" className="location-form" onSubmit={formSubmit}>
         <input

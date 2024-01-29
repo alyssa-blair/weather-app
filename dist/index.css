@@ -47,6 +47,11 @@ ul {
   padding-left: 0px;
 }
 
+#homepage h1 {
+  position: relative;
+  top: 250px;
+}
+
 #current-weather-hourly li {
   display: inline-block;
 }
@@ -105,9 +110,17 @@ ul {
     color:rgb(124, 124, 124);
 } */
 
+#dashboard {
+  position: relative;
+  border-radius: 20px;
+  min-width: 820px;
+  max-width: 820px;
+  height: 450px;
+}
+
 .widgets {
   position: relative;
-  /* background-color: red; */
+  left: 825px;
   border-radius: 20px;
   min-width: 820px;
   max-width: 820px;
@@ -144,6 +157,11 @@ ul {
 
 .weekday-date {
   text-align: left;
+}
+
+.current-weather {
+  width: 1000px;
+  height: 225px;
 }
 
 .current-weather-temperature {
@@ -205,7 +223,7 @@ ul {
 }
 
 #current-weather-hourly {
-  overflow-x: scroll;
+  overflow-x: auto;
   white-space: nowrap;
 }
 
@@ -237,13 +255,12 @@ ul {
 .side-widgets {
   background-color: rgb(12, 33, 67, 0.5);
   position: relative;
-  left: 825px;
   width: 300px;
   height: 240px;
   border-radius: 20px;
   padding: 10px;
   margin-bottom: 5px;
-  top: 225px;
+  /* top: 225px; */
 }
 
 .side-widgets p {

@@ -150,14 +150,12 @@ function Dashboard() {
   console.log(data);
   return (
     <div id="dashboard">
-      <div id="widgetsOne" className="widgets">
-        <div id="current-weather" className="current-weather">
-          {data && <CurrentWeather data={data} />}
-        </div>
-        {data && <WeeklyWeather data={data} />}
-        <div id="widgets" className="widgets">
-          {data && <Widgets data={data} />}
-        </div>
+      <div id="current-weather" className="current-weather">
+        {data && <CurrentWeather data={data} />}
+      </div>
+      {data && <WeeklyWeather data={data} />}
+      <div id="widgets" className="widgets">
+        {data && <Widgets data={data} />}
       </div>
     </div>
   );

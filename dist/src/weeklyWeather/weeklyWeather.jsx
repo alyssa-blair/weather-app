@@ -3,9 +3,9 @@ import {
   currentWeatherBreakdown,
   currentWeatherTemp,
 } from "../currentWeather/current.js";
-import { createGraph } from "./graph.js";
 import Weekday from "./weekday.jsx";
 import React, { useState } from "react";
+import Graph from "./graph.jsx";
 
 // export function fillWeekdays(data, graphDate = null) {
 //   var date = new Date();
@@ -133,7 +133,7 @@ function getMinMaxTemps(data, dayNum) {
 
 const WeeklyWeather = (props) => {
   const ids = [0, 1, 2, 3, 4, 5, 6]; // update to be in relation to today
-
+  const [graphVisible, setGraphVisible] = useState(null);
   const ls = [];
   // const [totalMin, setTotalMin] = useState(null);
   // const [totalMax, setTotalMax] = useState(null);
@@ -167,18 +167,27 @@ const WeeklyWeather = (props) => {
       <ul>
         {ls.map((weekday) => (
           <li key={weekday.day}>
-            <Weekday
-              day={weekday.day}
-              data={props.data}
-              currentMin={weekday.currentMin}
-              currentMax={weekday.currentMax}
-              totalMin={totalMin}
-              totalMax={totalMax}
-              id={weekday.id}
-            />
+            <div onClick={() => setGraphVisible(weekday.id)}>
+              <Weekday
+                day={weekday.day}
+                data={props.data}
+                currentMin={weekday.currentMin}
+                currentMax={weekday.currentMax}
+                totalMin={totalMin}
+                totalMax={totalMax}
+                id={weekday.id}
+              />
+            </div>
           </li>
         ))}
       </ul>
+      {graphVisible != null && (
+        <Graph
+          date={new Date(date.setDate(date.getDate() + 1))}
+          data={props.data}
+          id={graphVisible}
+        />
+      )}
     </div>
   );
 };
