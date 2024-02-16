@@ -6,7 +6,6 @@ import WeatherTime from "../dashboard/WeatherTime.jsx";
 const CurrentWeather = (props) => {
   const hourlyElems = Array.from({ length: 24 }, (_, index) => index + 1);
 
-  // const dateHeader =
   const currentTime = new WeatherTime(
     ...props.data.current.time.split(/-|T|:/)
   );

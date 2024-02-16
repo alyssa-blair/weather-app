@@ -40,24 +40,26 @@ const Widgets = (data) => {
     <div>
       <div id="humidity" className="side-widgets">
         <h1>Humidity</h1>
-        <h2>{widgetData.current.relative_humidity_2m}</h2>
+        <h2>{widgetData.current.relative_humidity_2m + "%"}</h2>
       </div>
       <div id="precipitation" className="side-widgets">
         <h1>Precipitation</h1>
-        <h2>{widgetData.current.precipitation}</h2>
+        <h2>{widgetData.current.precipitation + "mm"}</h2>
         <p>In the last hour</p>
       </div>
       <div id="precipitation-probability" className="side-widgets">
         <h1>Chance of Precipitation</h1>
-        <h2>{widgetData.current.precipitation_probability}</h2>
+        <h2>{widgetData.current.precipitation_probability + "%"}</h2>
       </div>
       <div id="wind-speed" className="side-widgets">
         <h1>Wind Speed</h1>
-        <h2>{widgetData.current.wind_speed_10m}</h2>
+        <h2>{Math.round(widgetData.current.wind_speed_10m) + "km/h"}</h2>
       </div>
       <div id="feels-like" className="side-widgets">
         <h1>Feels Like</h1>
-        <h2>{widgetData.current.apparent_temperature}</h2>
+        <h2>
+          {Math.round(widgetData.current.apparent_temperature) + "\u00B0"}
+        </h2>
       </div>
     </div>
   );

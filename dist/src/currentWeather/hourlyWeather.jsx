@@ -9,8 +9,6 @@ const HourlyWeather = (props) => {
   const times = hourly.time;
   const time = new WeatherTime(...times[index].split(/-|T|:/));
 
-  //   const hourlyElems = Array.from({ length: 24 }, (_, index) => index + 1);
-  //   const weatherCode = ;
   const weatherCode = hourly.weather_code[index];
   const temp = Math.round(hourly.temperature_2m[index]) + "\u00B0";
 
@@ -23,6 +21,5 @@ const HourlyWeather = (props) => {
     </div>
   );
 };
+
 export default HourlyWeather;
-// var time = new WeatherTime(...times[i + count].split(/-|T|:/));
-// var temp = Math.round(temps[i + count]);
