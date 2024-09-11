@@ -1,8 +1,12 @@
-import { formatDate } from "../dashboard/dateFormat.js";
+import { formatDate } from "../dashboard/dateFormat.jsx";
+import React from "react";
+import Plot from "react-plotly.js";
 
-export function createGraph(date, times, temps) {
-  const nextDayFormatted = formatDate(date);
+const Graph = (props) => {
+  const times = props.data.hourly.time;
+  const temps = props.data.hourly.temperature_2m;
 
+  const nextDayFormatted = formatDate(props.date);
   const searchDate = nextDayFormatted.substring(0, 10);
 
   const start = times.indexOf(searchDate + "T00:00");
@@ -19,7 +23,7 @@ export function createGraph(date, times, temps) {
 
   const layout = {
     title: {
-      text: `Weather on ${date.toDateString()}`,
+      text: `Weather on ${props.date.toDateString()}`,
       font: {
         family: "Segoe UI",
         size: 18,
@@ -57,5 +61,7 @@ export function createGraph(date, times, temps) {
     border_radius: "20px",
   };
 
-  Plotly.newPlot("weather-plot", graphData, layout);
-}
+  return <Plot data={graphData} layout={layout} />;
+};
+
+export default Graph;

@@ -1,0 +1,338 @@
+/* body {
+  background-color: black;
+  height: fill;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  text-align: center;
+} */
+
+body {
+  background-color: rgba(7, 77, 156, 0.596);
+  height: fill;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  text-align: center;
+}
+
+h1 {
+  font-family: "Segoe UI", sans-serif;
+  font-weight: 600;
+  color: rgb(0, 12, 55, 0.75);
+}
+
+h2 {
+  font-family: "Segoe UI", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: rgb(150, 150, 150);
+}
+
+h3 {
+  font-family: "Segoe UI", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: rgb(150, 150, 150);
+}
+
+h4 {
+  font-family: "Segoe UI", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  color: rgb(122, 122, 122);
+  margin: 0px;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+#homepage h1 {
+  position: relative;
+  top: 250px;
+}
+
+#current-weather-hourly li {
+  display: inline-block;
+}
+
+#current-weather-hourly ul {
+  margin: 0px;
+}
+
+.location-form {
+  position: relative;
+  display: inline-block;
+  top: 245px;
+}
+
+.location-input {
+  position: relative;
+  border-radius: 20px;
+  padding: 5px;
+  text-align: center;
+  font-family: inherit;
+  color: inherit;
+  background-color: rgb(45, 45, 45);
+  border: none;
+  padding-right: 30px;
+}
+
+.location-search {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  min-width: 30px;
+  background-color: rgb(35, 35, 35);
+  padding: 5px;
+  color: inherit;
+  cursor: pointer;
+  border: none;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+/* .about {
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 300px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    max-width: 200px;
+}
+
+.about p {
+    display: inline-block;
+    top: 250px;
+    color:rgb(124, 124, 124);
+} */
+
+#dashboard {
+  position: relative;
+  border-radius: 20px;
+  min-width: 820px;
+  max-width: 820px;
+  height: 450px;
+}
+
+.widgets {
+  position: relative;
+  left: 825px;
+  border-radius: 20px;
+  min-width: 820px;
+  max-width: 820px;
+  height: 450px;
+}
+
+.weekly-weather {
+  position: absolute;
+  background-color: rgb(12, 33, 67, 0.5);
+  font-family: inherit;
+  width: 99%;
+  height: 1300px;
+  min-width: 800px;
+  max-width: 800px;
+  border-radius: 20px;
+  padding: 10px;
+  left: 0px;
+  top: 225px;
+}
+
+.weekday {
+  background-color: rgb(12, 33, 67, 0.5);
+  position: relative;
+  width: 770px;
+  min-height: 150px;
+  display: block;
+  margin: auto;
+  border-radius: 10px;
+  border-width: 10px;
+  padding: 5px 15px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.weekday-date {
+  text-align: left;
+}
+
+.current-weather {
+  width: 1000px;
+  height: 225px;
+}
+
+.current-weather-temperature {
+  background-color: rgb(12, 33, 67, 0.5);
+  position: absolute;
+  font-family: inherit;
+  height: 200px;
+  width: 300px;
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 0px;
+  left: 0px;
+  display: block;
+}
+
+.current-weather-temperature h1 {
+  margin-bottom: 0px;
+}
+
+.current-weather-temperature p {
+  color: rgb(0, 12, 55, 0.75);
+  font-size: 60px;
+  font-weight: 600;
+  margin: 0px;
+}
+
+.current-weather-breakdown {
+  background-color: rgb(12, 33, 67, 0.5);
+  position: absolute;
+  font-family: inherit;
+  width: 800px;
+  height: 200px;
+  border-radius: 20px;
+  padding: 10px;
+  left: 325px;
+}
+
+.current-weather-breakdown h1 {
+  margin-bottom: 0px;
+}
+
+.current-weather-breakdown ::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 20px;
+  height: 20px;
+}
+
+.current-weather-breakdown ::-webkit-scrollbar-track {
+  background: rgb(12, 33, 67, 0.5);
+  border-radius: 20px;
+  scrollbar-width: thin;
+}
+
+.current-weather-breakdown ::-webkit-scrollbar-thumb {
+  background: rgb(102, 133, 167);
+  border-radius: 20px;
+  border: 5px solid transparent;
+  background-clip: content-box;
+}
+
+#current-weather-hourly {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.hourly-breakdown {
+  background-color: rgb(12, 33, 67, 0.5);
+  width: 80px;
+  height: 100px;
+  display: inline-block;
+  margin: 10px 5px;
+  border-radius: 10px;
+}
+
+.hourly-breakdown h3 {
+  margin: 0px;
+}
+
+#hourly-temp {
+  font-weight: 600;
+  font-size: 18px;
+  margin: -5px;
+}
+
+#hourly-emoji {
+  font-weight: 600;
+  font-size: 25px;
+  margin: 0px;
+}
+
+.side-widgets {
+  background-color: rgb(12, 33, 67, 0.5);
+  position: relative;
+  width: 300px;
+  height: 240px;
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 5px;
+  /* top: 225px; */
+}
+
+.side-widgets p {
+  color: rgb(12, 33, 67);
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.side-widgets h2 {
+  font-size: 60px;
+  margin: 0px;
+}
+
+.side-widgets h1 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.temperature-bar {
+  display: inline-block;
+  background-color: rgb(150, 150, 150);
+  width: 150px;
+  min-height: 10px;
+  margin: auto;
+  border-radius: 20px;
+}
+
+.temperature-bar > span {
+  display: block;
+  position: relative;
+  background-color: rgba(7, 77, 156, 0.596);
+  min-height: 10px;
+  border-radius: 20px;
+}
+
+.min-temp {
+  display: inline-block;
+  padding: 2px;
+}
+
+.max-temp {
+  display: inline-block;
+  padding: 2px;
+}
+
+.plot-window {
+  position: fixed;
+  width: 800px;
+  height: 500px;
+  background: rgb(12, 33, 67);
+  padding: 10px;
+  border-radius: 20px;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  z-index: 2;
+}
+
+.plot-window-hidden {
+  display: none;
+}
+
+.close-button {
+  min-width: 150px;
+  background-color: #1f77b4; /*rgba(7, 77, 156);*/
+  padding: 5px;
+  color: inherit;
+  cursor: pointer;
+  border: none;
+  border-radius: 20px;
+}
