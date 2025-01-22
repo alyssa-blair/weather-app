@@ -17,6 +17,8 @@ function getMinMaxTemps(data, dayNum) {
   var min;
   var max;
 
+  if (startIndex === -1) return [0, 0];
+
   for (var i = startIndex; i < startIndex + 24; i++) {
     if (times[i].startsWith(searchDate)) {
       if (!min || temps[i] < min) min = Math.round(temps[i]);
@@ -39,6 +41,7 @@ const WeeklyWeather = (props) => {
   var totalMin = null;
   var totalMax = null;
 
+  console.log(props.data);
   ids.forEach((id) => {
     var [min, max] = getMinMaxTemps(props.data, day);
 
@@ -54,7 +57,7 @@ const WeeklyWeather = (props) => {
 
     day = (day + 1) % 7;
   });
-  console.log(ls);
+
   return (
     <div id="weekly-weather" className="weekly-weather">
       <h1>7-day forecast</h1>

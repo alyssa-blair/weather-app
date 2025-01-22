@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import * as locationSearch from "location-search";
 
 const LocationForm = () => {
   // TODO: add location api and predictions for location name
@@ -22,13 +23,27 @@ const LocationForm = () => {
     <div id="homepage">
       <h1>Weather App</h1>
       <form id="location-form" className="location-form" onSubmit={formSubmit}>
-        <input
+        {/* <input
           id="location-input"
           type="text"
           className="location-input"
           placeholder="Enter a Location"
           // onkeypress={searchLocation()}
+        /> */}
+        <link
+          rel="stylesheet"
+          href="node_modules/@firstandthird/complete/lib/complete.css"
         />
+        <div data-module="LocationSearch" className="module-complete">
+          <input
+            data-name="input"
+            type="text"
+            id="location-search"
+            data-action="search"
+            data-action-type="input"
+          />
+          <div data-name="resultsContainer"></div>
+        </div>
         <input
           type="submit"
           className="location-search"

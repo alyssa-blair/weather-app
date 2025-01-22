@@ -2,9 +2,11 @@ import WeeklyWeather from "../weeklyWeather/weeklyWeather.jsx";
 import React, { useEffect, useState } from "react";
 import CurrentWeather from "../currentWeather/currentWeather.jsx";
 import Widgets from "../currentWeather/widgets.jsx";
+import moment from "moment-timezone";
 
 function getParams() {
   const date = new Date();
+  date.setMonth(1).toString();
   const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
   const dateStr = date.toLocaleString("en-US", {
@@ -24,7 +26,7 @@ function getParams() {
     current:
       "temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code,apparent_temperature,precipitation,precipitation_probability",
   };
-
+  console.log(params);
   return params;
 }
 
@@ -66,6 +68,7 @@ const Dashboard = () => {
   useEffect(() => {
     fetchDataFunction().then((d) => {
       if (!data) setData(d);
+      else return;
     });
   }, []);
 
